@@ -18,11 +18,11 @@ To use Simple Wiper, follow these steps:
 
 2. Navigate to the project directory:
 
-	cd simple-wiper
+	cd wiper
 
 3. Run the script and specify the file or directory you want to wipe:
 
-	python simple_wiper.py /path/to/file_or_directory
+	python wiper.py /path/to/file_or_directory
 
 
 
@@ -33,7 +33,7 @@ tqdm library (install via pip: pip install tqdm)
 
 ## Usage
 
-python simple_wiper.py /path/to/file_or_directory
+python wiper.py /path/to/file_or_directory
 
 Replace /path/to/file_or_directory with the path to the file or directory you want to wipe.
 
