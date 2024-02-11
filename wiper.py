@@ -8,6 +8,8 @@ from tqdm import tqdm
 
 
 def overwrite_with_zeros(file_path: str) -> None:
+    """Open a file in read/write in binary and overwrites it with 0's"""
+    
     try:
         with open(file_path, "r+b") as f:
             size = os.path.getsize(file_path)
@@ -18,6 +20,8 @@ def overwrite_with_zeros(file_path: str) -> None:
 
 
 def list_files(directory: str) -> (list, int):
+    """Returns a list of all files in the directory"""
+    
     file_list = []
     size = 0
     for root, dirs, files in os.walk(directory):
@@ -29,6 +33,8 @@ def list_files(directory: str) -> (list, int):
 
 
 def convert_size(size: int) -> str:
+    """Convert Bytes to Kilo,Mega,Giga or Terabytes"""
+    
     if size > 1024 ** 4:
         return str(round(size / (1024 ** 4))) + "TB"
     elif size > 1024 ** 3:
@@ -42,6 +48,8 @@ def convert_size(size: int) -> str:
 
 
 def print_banner() -> None:
+    """Print banner"""
+    
     print("   ██╗    ██╗██╗██████╗ ███████╗██████╗\n "
           "  ██║    ██║██║██╔══██╗██╔════╝██╔══██╗ \n "
           "  ██║ █╗ ██║██║██████╔╝█████╗  ██████╔╝ \n "
@@ -54,9 +62,14 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         print_banner()
         start = time.time()
+        
+        # get all files in the directory
         files, total_size = list_files(directory=sys.argv[1])
         print(f"Space to wipe: {convert_size(total_size)}")
+        
+        # spawns as many processes as there a cpu cores 
         with concurrent.futures.ProcessPoolExecutor(os.cpu_count()) as executor:
+            # create a progress bar
             with tqdm(total=len(files)) as pbar:
 
                 futures = []
