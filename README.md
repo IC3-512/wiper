@@ -14,7 +14,7 @@ To use Simple Wiper, follow these steps:
 
 1. Clone the repository to your local machine:
    
-	git clone https://https://github.com/IC3-512/wiper.git
+	git clone https://github.com/IC3-512/wiper.git
 
 2. Navigate to the project directory:
 
